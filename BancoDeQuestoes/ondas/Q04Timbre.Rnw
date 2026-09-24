@@ -1,0 +1,58 @@
+<<echo=FALSE, results=hide>>=
+## IMPLEMENTADA POR: ChatGPT/OpenAI para o BancoFisica
+## Questao autoral inspirada no ENEM 2015, questao 86.
+## Parametrizacao: instrumentos, nota musical e ordem das alternativas.
+
+pares_instrumentos <- list(
+  c("flauta", "piano"),
+  c("violino", "clarinete"),
+  c("violao", "trompete"),
+  c("saxofone", "piano"),
+  c("flauta", "violao")
+)
+
+par <- pares_instrumentos[[sample(seq_along(pares_instrumentos), 1)]]
+instrumento1 <- par[1]
+instrumento2 <- par[2]
+nota <- sample(c("do", "re", "mi", "fa", "sol", "la"), 1)
+
+alternativas <- c(
+  "ao timbre, relacionado ao formato da onda e a composicao de harmonicos produzida por cada instrumento.",
+  "a altura, pois instrumentos diferentes sempre produzem frequencias fundamentais diferentes ao tocar a mesma nota.",
+  "a velocidade de propagacao, que depende do instrumento que produziu o som.",
+  "a intensidade sonora, que e a caracteristica que identifica de modo exclusivo cada instrumento.",
+  "ao comprimento de onda no ar, que necessariamente e diferente para cada instrumento ao tocar a mesma nota."
+)
+
+gabarito <- c(TRUE, FALSE, FALSE, FALSE, FALSE)
+ordem <- sample(seq_along(alternativas))
+questions <- alternativas[ordem]
+solutions <- gabarito[ordem]
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Dois musicos, um tocando \Sexpr{instrumento1} e outro tocando \Sexpr{instrumento2}, executam a mesma nota musical (\Sexpr{nota}) no mesmo ambiente. Mesmo sem ver os instrumentos, um ouvinte consegue distingui-los principalmente devido
+
+<<echo=FALSE, results=tex>>=
+answerlist(questions)
+@
+
+\end{question}
+
+\begin{solution}
+
+Quando dois instrumentos executam a mesma nota, eles possuem a mesma frequencia fundamental associada a essa nota. Entretanto, cada instrumento produz uma combinacao propria de frequencia fundamental e harmonicos, com amplitudes relativas diferentes.
+
+Essa composicao modifica a forma da onda sonora e caracteriza o \textbf{timbre}. E o timbre que permite reconhecer instrumentos diferentes mesmo quando eles executam a mesma nota.
+
+A velocidade do som depende principalmente do meio de propagacao, e nao do instrumento. No mesmo meio e para a mesma frequencia fundamental, o comprimento de onda fundamental tambem e o mesmo. A intensidade pode variar, mas nao e a caracteristica que identifica de modo exclusivo o instrumento.
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{schoice}
+%% \exsolution{\Sexpr{mchoice2string(solutions)}}
+%% \exname{Q04Timbre}
