@@ -1,21 +1,20 @@
 <<echo=FALSE, results=hide>>=
-## IMPLEMENTADA POR: ChatGPT/OpenAI para o BancoFisica
-## Questao autoral inspirada no ENEM 2020, questao 94.
-## Parametrizacao: fonte de ruido e ordem das alternativas.
+## Questão autoral inspirada no ENEM 2020, questão 94.
+## Parametrização: fonte de ruído e ordem das alternativas.
 
 fonte_ruido <- sample(c(
-  "ronco aproximadamente constante de uma turbina de aviao",
-  "ruido continuo de um motor de onibus",
+  "ronco aproximadamente constante de uma turbina de avião",
+  "ruído contínuo de um motor de ônibus",
   "zumbido de um aparelho de ar-condicionado",
-  "ruido continuo de um aspirador de po"
+  "ruído contínuo de um aspirador de pó"
 ), 1)
 
 alternativas <- c(
-  "interferencia destrutiva",
-  "absorcao",
-  "reflexao",
-  "difracao",
-  "polarizacao"
+  "interferência destrutiva",
+  "absorção",
+  "reflexão",
+  "difração",
+  "polarização"
 )
 
 gabarito <- c(TRUE, FALSE, FALSE, FALSE, FALSE)
@@ -28,9 +27,9 @@ solutions <- gabarito[ordem]
 
 \begin{question}
 
-Um fone de ouvido com cancelamento ativo de ruido capta o \Sexpr{fonte_ruido} por meio de microfones. O sistema eletronico produz entao uma segunda onda sonora, de amplitude semelhante, ajustada para chegar aproximadamente em oposicao de fase ao ruido externo.
+Um fone de ouvido com cancelamento ativo de ruído capta o \Sexpr{fonte_ruido} por meio de microfones. O sistema eletrônico produz então uma segunda onda sonora, de amplitude semelhante, ajustada para chegar aproximadamente em oposição de fase ao ruído externo.
 
-O fenomeno ondulatorio utilizado para reduzir o som percebido pelo usuario e a
+O fenômeno ondulatório utilizado para reduzir o som percebido pelo usuário é a
 
 <<echo=FALSE, results=tex>>=
 answerlist(questions)
@@ -40,11 +39,11 @@ answerlist(questions)
 
 \begin{solution}
 
-As duas ondas sonoras se superpoem no ouvido do usuario. Quando a onda produzida pelo fone chega aproximadamente em oposicao de fase ao ruido externo, uma compressao de uma onda tende a coincidir com uma rarefacao da outra.
+As duas ondas sonoras se superpõem no ouvido do usuário. Quando a onda produzida pelo fone chega aproximadamente em oposição de fase ao ruído externo, uma compressão de uma onda tende a coincidir com uma rarefação da outra.
 
-Pelo principio da superposicao, as amplitudes se somam algebricamente. Nessa situacao, a amplitude resultante e reduzida, caracterizando \textbf{interferencia destrutiva}.
+Pelo princípio da superposição, as amplitudes se somam algebricamente. Nessa situação, a amplitude resultante é reduzida, caracterizando \textbf{interferência destrutiva}.
 
-Esse mecanismo explica por que o cancelamento ativo funciona especialmente bem para ruidos relativamente regulares e previsiveis.
+Esse mecanismo explica por que o cancelamento ativo funciona especialmente bem para ruídos relativamente regulares e previsíveis.
 
 \end{solution}
 
