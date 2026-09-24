@@ -1,0 +1,54 @@
+<<echo=FALSE, results=hide>>=
+## IMPLEMENTADA POR: ChatGPT/OpenAI para o BancoFisica
+## Questao autoral inspirada no ENEM 2020, questao 94.
+## Parametrizacao: fonte de ruido e ordem das alternativas.
+
+fonte_ruido <- sample(c(
+  "ronco aproximadamente constante de uma turbina de aviao",
+  "ruido continuo de um motor de onibus",
+  "zumbido de um aparelho de ar-condicionado",
+  "ruido continuo de um aspirador de po"
+), 1)
+
+alternativas <- c(
+  "interferencia destrutiva",
+  "absorcao",
+  "reflexao",
+  "difracao",
+  "polarizacao"
+)
+
+gabarito <- c(TRUE, FALSE, FALSE, FALSE, FALSE)
+ordem <- sample(seq_along(alternativas))
+questions <- alternativas[ordem]
+solutions <- gabarito[ordem]
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Um fone de ouvido com cancelamento ativo de ruido capta o \Sexpr{fonte_ruido} por meio de microfones. O sistema eletronico produz entao uma segunda onda sonora, de amplitude semelhante, ajustada para chegar aproximadamente em oposicao de fase ao ruido externo.
+
+O fenomeno ondulatorio utilizado para reduzir o som percebido pelo usuario e a
+
+<<echo=FALSE, results=tex>>=
+answerlist(questions)
+@
+
+\end{question}
+
+\begin{solution}
+
+As duas ondas sonoras se superpoem no ouvido do usuario. Quando a onda produzida pelo fone chega aproximadamente em oposicao de fase ao ruido externo, uma compressao de uma onda tende a coincidir com uma rarefacao da outra.
+
+Pelo principio da superposicao, as amplitudes se somam algebricamente. Nessa situacao, a amplitude resultante e reduzida, caracterizando \textbf{interferencia destrutiva}.
+
+Esse mecanismo explica por que o cancelamento ativo funciona especialmente bem para ruidos relativamente regulares e previsiveis.
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{schoice}
+%% \exsolution{\Sexpr{mchoice2string(solutions)}}
+%% \exname{Q07CancelamentoRuido}
