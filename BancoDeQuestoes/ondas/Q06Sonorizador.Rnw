@@ -1,7 +1,6 @@
 <<echo=FALSE, results=hide>>=
-## IMPLEMENTADA POR: ChatGPT/OpenAI para o BancoFisica
-## Questao autoral inspirada no ENEM 2018, questao 117.
-## Parametrizacao: velocidade do veiculo e espacamento entre saliencias.
+## Questão autoral inspirada no ENEM 2018, questão 117.
+## Parametrização: velocidade do veículo e espaçamento entre saliências.
 
 vel_kmh <- sample(c(54, 72, 90, 108, 126), 1)
 esp_cm <- sample(c(4, 5, 6, 8, 10, 12, 15, 20), 1)
@@ -16,29 +15,29 @@ resp <- round(vel_ms / esp_m, 1)
 
 \begin{question}
 
-Um sonorizador de rodovia e formado por pequenas saliencias igualmente espacadas. Ao passar sobre cada saliencia, o pneu de um veiculo sofre uma vibracao, produzindo uma sequencia periodica de pulsos sonoros.
+Um sonorizador de rodovia é formado por pequenas saliências igualmente espaçadas. Ao passar sobre cada saliência, o pneu de um veículo sofre uma vibração, produzindo uma sequência periódica de pulsos sonoros.
 
-Um veiculo passa pelo sonorizador com velocidade constante de \Sexpr{vel_kmh} km/h. A distancia entre duas saliencias consecutivas e de \Sexpr{esp_cm} cm.
+Um veículo passa pelo sonorizador com velocidade constante de \Sexpr{vel_kmh} km/h. A distância entre duas saliências consecutivas é de \Sexpr{esp_cm} cm.
 
-Qual e a frequencia, em hertz, com que as vibracoes sao produzidas? Apresente a resposta com uma casa decimal.
+Qual é a frequência, em hertz, com que as vibrações são produzidas? Apresente a resposta com uma casa decimal.
 
 \end{question}
 
 \begin{solution}
 
-A frequencia corresponde ao numero de saliencias atingidas por segundo. Primeiro convertemos a velocidade para m/s:
+A frequência corresponde ao número de saliências atingidas por segundo. Primeiro convertemos a velocidade para m/s:
 
 \[
 v = \frac{\Sexpr{vel_kmh}}{3,6} = \Sexpr{round(vel_ms, 2)}\ \mathrm{m/s}.
 \]
 
-O espacamento entre saliencias e
+O espaçamento entre saliências é
 
 \[
 d = \Sexpr{esp_cm}\ \mathrm{cm} = \Sexpr{esp_m}\ \mathrm{m}.
 \]
 
-O intervalo de tempo entre duas vibracoes sucessivas e
+O intervalo de tempo entre duas vibrações sucessivas é
 
 \[
 \Delta t = \frac{d}{v}.
@@ -52,7 +51,7 @@ f = \frac{1}{\Delta t} = \frac{v}{d}
 = \Sexpr{resp}\ \mathrm{Hz}.
 \]
 
-Assim, a frequencia das vibracoes e \Sexpr{resp} Hz.
+Assim, a frequência das vibrações é \Sexpr{resp} Hz.
 
 \end{solution}
 
