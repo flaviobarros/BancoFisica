@@ -1,0 +1,75 @@
+<<echo=FALSE, results=hide>>=
+## IMPLEMENTADA POR: ChatGPT/OpenAI para o BancoFisica
+## Questao autoral inspirada no ENEM 2016, questao 56.
+## Parametrizacao: tipo de presa, sentido do movimento e ordem das alternativas.
+
+presa <- sample(c("mariposa", "besouro", "mosquito", "pequeno inseto"), 1)
+afastando <- sample(c(TRUE, FALSE), 1)
+
+if (afastando) {
+  movimento <- "afastando-se do morcego"
+  intensidade_correta <- "diminuida"
+  tempo_correto <- "aumentado"
+  frequencia_correta <- "diminuida"
+} else {
+  movimento <- "aproximando-se do morcego"
+  intensidade_correta <- "aumentada"
+  tempo_correto <- "diminuido"
+  frequencia_correta <- "aumentada"
+}
+
+grade <- expand.grid(
+  intensidade = c("aumentada", "diminuida"),
+  tempo = c("aumentado", "diminuido"),
+  frequencia = c("aumentada", "diminuida"),
+  stringsAsFactors = FALSE
+)
+
+correta <- which(
+  grade$intensidade == intensidade_correta &
+  grade$tempo == tempo_correto &
+  grade$frequencia == frequencia_correta
+)
+
+selecionadas <- c(correta, sample(setdiff(seq_len(nrow(grade)), correta), 4))
+selecionadas <- sample(selecionadas)
+
+questions <- paste0(
+  "Intensidade ", grade$intensidade[selecionadas],
+  ", tempo de retorno ", grade$tempo[selecionadas],
+  " e frequencia percebida ", grade$frequencia[selecionadas], "."
+)
+
+solutions <- selecionadas == correta
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Um morcego em repouso utiliza pulsos ultrassonicos para localizar uma \Sexpr{presa}. Considere uma situacao unidimensional em que a presa se move com velocidade constante, \Sexpr{movimento}. Mantidas as demais condicoes, quais tendencias o morcego deve observar no eco recebido?
+
+<<echo=FALSE, results=tex>>=
+answerlist(questions)
+@
+
+\end{question}
+
+\begin{solution}
+
+O morcego pode obter informacoes diferentes a partir do eco:
+
+\begin{itemize}
+\item O tempo de retorno esta relacionado a distancia percorrida pelo pulso. Se a presa se afasta, a distancia aumenta e o eco demora mais; se ela se aproxima, o tempo de retorno diminui.
+\item A intensidade recebida tende a diminuir quando a distancia aumenta, devido ao espalhamento da onda, e tende a aumentar quando a presa se aproxima, mantidas as demais condicoes.
+\item Pelo efeito Doppler, o eco refletido por um alvo que se afasta chega com frequencia menor. Se o alvo se aproxima, a frequencia recebida aumenta.
+\end{itemize}
+
+Portanto, para uma presa \Sexpr{movimento}, as tendencias corretas sao: intensidade \Sexpr{intensidade_correta}, tempo de retorno \Sexpr{tempo_correto} e frequencia percebida \Sexpr{frequencia_correta}.
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{schoice}
+%% \exsolution{\Sexpr{mchoice2string(solutions)}}
+%% \exname{Q05Ecolocalizacao}
