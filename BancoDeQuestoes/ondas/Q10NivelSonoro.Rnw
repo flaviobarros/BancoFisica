@@ -1,0 +1,67 @@
+<<echo=FALSE, results=hide>>=
+## Questão reconstruída a partir de uma questão anulada do ENEM 2025.
+## A ambiguidade do item original foi removida: as fontes são independentes,
+## não coerentes e contribuem com a mesma intensidade no ponto de observação.
+## Parametrização: nível sonoro individual e número de fontes.
+
+nivel_individual <- sample(c(60, 70, 80, 90, 100), 1)
+k <- sample(1:4, 1)
+N <- 10^k
+
+nivel_total <- nivel_individual + 10 * log10(N)
+resp <- round(nivel_total, 1)
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Em um determinado ponto de observação, uma fonte sonora produz nível sonoro de \Sexpr{nivel_individual} dB.
+
+Considere agora \Sexpr{N} fontes idênticas e independentes, sem relação fixa de fase entre si, posicionadas de modo que cada uma, isoladamente, produza nesse mesmo ponto a mesma intensidade da primeira fonte. Nessas condições, as intensidades médias das fontes podem ser somadas.
+
+Qual é o nível sonoro total, em decibéis, nesse ponto?
+
+Apresente a resposta com uma casa decimal.
+
+\end{question}
+
+\begin{solution}
+
+O nível sonoro é definido por
+
+\[
+\beta = 10\log_{10}\left(\frac{I}{I_0}\right).
+\]
+
+Como as \Sexpr{N} fontes são independentes e cada uma produz a mesma intensidade \(I_1\) no ponto de observação, a intensidade total é
+
+\[
+I_T = \Sexpr{N}\, I_1.
+\]
+
+Assim,
+
+\[
+\beta_T
+= 10\log_{10}\left(\frac{\Sexpr{N}I_1}{I_0}\right)
+= 10\log_{10}(\Sexpr{N})
++ 10\log_{10}\left(\frac{I_1}{I_0}\right).
+\]
+
+Portanto,
+
+\[
+\beta_T
+= 10\log_{10}(\Sexpr{N})
++ \Sexpr{nivel_individual}
+= \Sexpr{resp}\ \mathrm{dB}.
+\]
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{resp}}
+%% \exname{Q10NivelSonoro}
+%% \extol{0.1}
