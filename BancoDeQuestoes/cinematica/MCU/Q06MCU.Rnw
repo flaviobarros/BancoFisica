@@ -3,13 +3,12 @@
 R <- sample(seq(2.0, 2.5, 0.1), 1)
 g <- 10
 
-## Resposta: velocidade mínima no ponto mais baixo do loop
+## Resposta
 v_ms <- sqrt(5 * g * R)
 v <- round(v_ms * 3.6, 1)
 @
 
 \usepackage[utf8]{inputenc}
-\usepackage{tikz}
 
 \begin{question}
 
@@ -17,35 +16,23 @@ O inglês Damien Walters, praticante de parkour, conseguiu completar um desafio 
 
 Despreze perdas de energia e considere \(g=\Sexpr{g}\) m/s$^2$. Qual é a velocidade mínima de entrada, em km/h, necessária para que ele complete o loop sem perder contato com a trajetória? Arredonde a resposta para uma casa decimal.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.9]
-  \draw[thick] (0,0) circle (2);
-  \draw[dashed] (0,0) -- (2,0);
-  \node at (1,0.25) {$R$};
-  \filldraw (0,-2) circle (2pt);
-  \node[below] at (0,-2) {entrada};
-  \filldraw (0,2) circle (2pt);
-  \node[above] at (0,2) {topo};
-\end{tikzpicture}
-\end{center}
-
 \end{question}
 
 \begin{solution}
 
-Para que o praticante apenas mantenha contato com a trajetória no ponto mais alto, a força normal mínima nesse ponto é nula. Assim, a força centrípeta é fornecida apenas pelo peso:
+Para que o praticante apenas mantenha contato com a trajetória no ponto mais alto, a força normal mínima nesse ponto é nula. Assim,
 
 \[
-\frac{m v_{\mathrm{topo}}^2}{R}=mg.
+\frac{m v_{\mathrm{topo}}^2}{R}=mg,
 \]
 
-Logo,
+de modo que
 
 \[
 v_{\mathrm{topo}}^2=gR.
 \]
 
-Entre o ponto mais baixo e o topo, há uma elevação de \(2R\). Pela conservação da energia mecânica,
+Do ponto mais baixo até o topo, a variação de altura é \(2R\). Pela conservação da energia mecânica,
 
 \[
 \frac{1}{2}m v_{\mathrm{entrada}}^2
@@ -58,36 +45,20 @@ mg(2R).
 Substituindo \(v_{\mathrm{topo}}^2=gR\),
 
 \[
-v_{\mathrm{entrada}}^2
-=
-gR+4gR
-=
-5gR.
+v_{\mathrm{entrada}}^2=5gR.
 \]
 
-Portanto,
+Logo,
 
 \[
 v_{\mathrm{entrada}}
 =
 \sqrt{5gR}
 =
-\sqrt{5\cdot \Sexpr{g}\cdot \Sexpr{R}}
-=
-\Sexpr{round(v_ms,2)}\ \mathrm{m/s}.
-\]
-
-Convertendo para km/h,
-
-\[
-v_{\mathrm{entrada}}
-=
-\Sexpr{round(v_ms,2)}\times 3{,}6
+\Sexpr{round(v_ms,2)}\ \mathrm{m/s}
 =
 \Sexpr{v}\ \mathrm{km/h}.
 \]
-
-A massa não aparece no resultado porque ela se cancela tanto na condição centrípeta quanto na conservação da energia.
 
 \end{solution}
 
