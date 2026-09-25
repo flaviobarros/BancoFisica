@@ -1,0 +1,72 @@
+<<echo=FALSE, results=hide>>=
+## Questão autoral inspirada no ENEM 2020, questão 109.
+## Parametrização: profundidade, velocidade do som e ordem do modo de ressonância.
+
+casos <- data.frame(
+  L = c(20, 21, 25, 30, 34, 40),
+  v = c(320, 336, 300, 360, 340, 320)
+)
+
+caso <- casos[sample(seq_len(nrow(casos)), 1), ]
+L <- caso$L
+v <- caso$v
+n <- sample(1:4, 1)
+
+f_atual <- (2 * n - 1) * v / (4 * L)
+f_proxima <- (2 * n + 1) * v / (4 * L)
+
+resp <- round(f_proxima, 1)
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Uma cavidade perfurada no solo comporta-se, aproximadamente, como um tubo sonoro fechado em uma extremidade. Sua profundidade é de \Sexpr{L} m e a velocidade do som no interior da cavidade é \Sexpr{v} m/s.
+
+Um oscilador de frequência variável identifica uma ressonância em \Sexpr{round(f_atual,1)} Hz. Qual será a frequência da ressonância seguinte?
+
+Apresente a resposta em hertz, com uma casa decimal.
+
+\end{question}
+
+\begin{solution}
+
+Para um tubo fechado em uma extremidade, as frequências de ressonância são
+
+\[
+f_n = \frac{(2n-1)v}{4L},
+\]
+
+com \(n=1,2,3,\ldots\). Duas ressonâncias consecutivas diferem de
+
+\[
+\Delta f
+= \frac{(2n+1)v}{4L}-\frac{(2n-1)v}{4L}
+= \frac{v}{2L}.
+\]
+
+Neste caso,
+
+\[
+\Delta f
+= \frac{\Sexpr{v}}{2\cdot \Sexpr{L}}
+= \Sexpr{round(v/(2*L),1)}\ \mathrm{Hz}.
+\]
+
+Logo,
+
+\[
+f_{\mathrm{seguinte}}
+= \Sexpr{round(f_atual,1)}
++ \Sexpr{round(v/(2*L),1)}
+= \Sexpr{resp}\ \mathrm{Hz}.
+\]
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{resp}}
+%% \exname{Q08TuboSonoro}
+%% \extol{0.1}
