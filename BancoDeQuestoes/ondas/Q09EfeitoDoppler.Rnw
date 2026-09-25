@@ -1,0 +1,61 @@
+<<echo=FALSE, results=hide>>=
+## Questão autoral inspirada no ENEM 2024, questão 130.
+## Parametrização: sentido do movimento e ordem das alternativas.
+
+aproximando <- sample(c(TRUE, FALSE), 1)
+
+if (aproximando) {
+  movimento <- "aproxima-se"
+  altura <- "mais agudo"
+  relacao <- "$f_r > f_0$"
+} else {
+  movimento <- "afasta-se"
+  altura <- "mais grave"
+  relacao <- "$f_r < f_0$"
+}
+
+alternativas <- c(
+  paste0(altura, " e ", relacao, "."),
+  paste0(ifelse(aproximando, "mais grave", "mais agudo"), " e ", relacao, "."),
+  paste0(altura, " e $f_r = f_0$."),
+  paste0(ifelse(aproximando, "mais grave", "mais agudo"), " e $f_r = f_0$."),
+  paste0(ifelse(aproximando, "mais grave", "mais agudo"), " e ",
+         ifelse(aproximando, "$f_r < f_0$.", "$f_r > f_0$."))
+)
+
+gabarito <- c(TRUE, FALSE, FALSE, FALSE, FALSE)
+ordem <- sample(seq_along(alternativas))
+questions <- alternativas[ordem]
+solutions <- gabarito[ordem]
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+Uma ambulância com a sirene ligada \Sexpr{movimento} de um observador parado. Ao mesmo tempo, um radar próximo ao observador emite ondas eletromagnéticas de frequência \(f_0\), que são refletidas pela ambulância e retornam ao radar com frequência \(f_r\).
+
+Qual combinação descreve corretamente, nessa situação, o som percebido pelo observador e a frequência da onda refletida pelo veículo?
+
+<<echo=FALSE, results=tex>>=
+answerlist(questions)
+@
+
+\end{question}
+
+\begin{solution}
+
+O efeito Doppler altera a frequência percebida quando há movimento relativo entre fonte e observador.
+
+Se a ambulância se aproxima, as frentes de onda sonora chegam mais comprimidas e o observador percebe frequência maior, isto é, um som mais agudo. Na reflexão da onda do radar por um alvo que se aproxima, a frequência recebida pelo radar também é maior que a emitida.
+
+Se a ambulância se afasta, ocorre o contrário: o som é percebido como mais grave e a onda refletida retorna ao radar com frequência menor.
+
+Nesta versão, a ambulância \Sexpr{movimento} do observador. Portanto, o som é percebido como \Sexpr{altura} e vale \Sexpr{relacao}.
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{schoice}
+%% \exsolution{\Sexpr{mchoice2string(solutions)}}
+%% \exname{Q09EfeitoDoppler}
