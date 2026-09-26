@@ -1,0 +1,95 @@
+<<echo=FALSE, results=hide>>=
+## Questão parametrizada a partir do ENEM 2017, questão 116.
+## Parametrização: comprimentos X_L e X_R.
+## A configuração corresponde ao primeiro mínimo de intensidade após X_L = X_R.
+
+v_som <- 320
+
+delta_cm <- sample(c(5, 8, 10, 12.5, 16, 20), 1)
+XR <- sample(seq(20, 30, by = 2), 1)
+XL <- XR + delta_cm
+
+delta_percurso_m <- 2 * (XL - XR) / 100
+lambda <- 2 * delta_percurso_m
+resp <- round(v_som / lambda, 1)
+@
+
+\usepackage[utf8]{inputenc}
+
+\begin{question}
+
+O trombone de Quincke é um dispositivo experimental utilizado para demonstrar o fenômeno da interferência de ondas sonoras. Uma fonte emite ondas sonoras de determinada frequência na entrada do dispositivo. Essas ondas se dividem pelos dois caminhos \(ADC\) e \(AEC\) e se encontram no ponto \(C\), onde se posiciona um detector.
+
+Inicialmente, com \(X_L=X_R\), capta-se um som de grande intensidade. Em seguida, o trecho móvel do lado esquerdo é deslocado lentamente até que se observe o \textbf{primeiro mínimo de intensidade} no detector, na configuração mostrada na figura.
+
+Considere, nessa configuração,
+
+\[
+X_L=\Sexpr{XL}\ \mathrm{cm},
+\qquad
+X_R=\Sexpr{XR}\ \mathrm{cm},
+\]
+
+e velocidade do som no interior do tubo igual a \(\Sexpr{v_som}\ \mathrm{m/s}\).
+
+\begin{center}
+\includegraphics[width=0.82\textwidth]{Q11TromboneQuincke.png}
+\end{center}
+
+Qual é a frequência, em hertz, do som produzido pela fonte? Apresente a resposta com uma casa decimal.
+
+\end{question}
+
+\begin{solution}
+
+Como os dois ramos possuem a mesma geometria nas curvas, a diferença entre os percursos depende apenas da diferença horizontal entre \(X_L\) e \(X_R\). Cada caminho possui dois trechos horizontais, de modo que
+
+\[
+\Delta L
+=
+2(X_L-X_R).
+\]
+
+Para os valores sorteados,
+
+\[
+\Delta L
+=
+2(\Sexpr{XL}-\Sexpr{XR})\ \mathrm{cm}
+=
+\Sexpr{round(delta_percurso_m,3)}\ \mathrm{m}.
+\]
+
+Como o deslocamento foi feito a partir da situação \(X_L=X_R\) até o \textbf{primeiro mínimo}, ocorre interferência destrutiva com
+
+\[
+\Delta L=\frac{\lambda}{2}.
+\]
+
+Portanto,
+
+\[
+\lambda=2\Delta L
+=
+\Sexpr{round(lambda,3)}\ \mathrm{m}.
+\]
+
+Usando \(v=\lambda f\),
+
+\[
+f
+=
+\frac{v}{\lambda}
+=
+\frac{\Sexpr{v_som}}{\Sexpr{round(lambda,3)}}
+=
+\Sexpr{resp}\ \mathrm{Hz}.
+\]
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{resp}}
+%% \exname{Q11TromboneQuincke}
+%% \extol{0.1}
